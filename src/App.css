@@ -32,9 +32,7 @@ table {
   width: 15%;
 }
 
-tr:nth-child(even) {
-  background-color: #eeeeee;
-}
+
 
 td, th {
   margin: 0;
