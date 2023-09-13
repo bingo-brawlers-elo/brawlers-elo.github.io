@@ -1,12 +1,12 @@
 import * as RT from "runtypes";
 import csvToJson from "csvtojson";
-import fs from "fs/promises";
-import path from "path";
 
-const Match = RT.Record({
+export const Match = RT.Record({
     "player_1": RT.String,
     "player_2": RT.String,
-    "winner": RT.Union(RT.Literal(1), RT.Literal(2), RT.Literal(0))
+    "winner": RT.Union(RT.Literal(1), RT.Literal(2), RT.Literal(0)),
+    practice_match: RT.Boolean,
+    vod_link: RT.Union(RT.String, RT.Undefined)
 });
 
 const Matches = RT.Array(Match);
@@ -21,10 +21,6 @@ const normalize = (match: Match): Match => {
     match.player_2 = match.player_2.toLowerCase();
 
     return match;
-}
-
-const loadDebugDataFixture = async () => {
-    return fs.readFile(path.join(__dirname, "../data/initial-dataset.csv"), "utf8");
 }
 
 const isOk = (res: Response) => {
@@ -48,8 +44,7 @@ const loadDataFromSheets = async () => {
 }
 
 export const loadData = async () => {
-    // const csvData = await loadDebugDataFixture();
     const csvData = await loadDataFromSheets();
-    const data = await csvToJson({colParser: {winner: "number"}}).fromString(csvData);
+    const data = await csvToJson({colParser: {winner: "number", practice_match:(item) => item === "TRUE"}}).fromString(csvData);
     return Matches.check(data).map(normalize);
 }
