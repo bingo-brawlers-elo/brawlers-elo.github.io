@@ -11,7 +11,7 @@ function App() {
   return (
     <>
         <h1>Bingo Brawlers Elo</h1>
-        <h2>Rank</h2>
+        <h2>Current Elo Ratings</h2>
         <EloList data={eloData}/>
         <h2>Season 2 Matches</h2>
         <MatchList data={eloData} type={'competiton'}/>
@@ -19,7 +19,7 @@ function App() {
         <MatchList data={eloData} type={'practice'}/>
         <h2>What is this?</h2>
         <p>
-        This shows the elo scores based on the matches listed above. They're <a href={'https://docs.google.com/spreadsheets/d/12mc-zRMfN1GbnATjUiZJ_BN8M7V1E2kHiHn0EMHvrCQ/edit#gid=1099556932'}>  pulled from this sheet</a>,
+        This shows the elo ratings based on the matches listed above. They're <a href={'https://docs.google.com/spreadsheets/d/12mc-zRMfN1GbnATjUiZJ_BN8M7V1E2kHiHn0EMHvrCQ/edit#gid=1099556932'}>  pulled from this sheet</a>,
         which was mostly aggregated by <em>Helios:23.5 Kenneth:5.5</em> on discord (thanks).
         The more matches, the more "accurate" the number would be.
         </p>
