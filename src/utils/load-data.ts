@@ -37,7 +37,6 @@ const data = (res: Response) => {
 
 const loadDataFromSheets = async () => {
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
-    console.log(url)
     return fetch(url)
         .then(isOk)
         .then(data)

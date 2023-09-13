@@ -39,21 +39,16 @@ const withLocalStorageCache = (ttl: number) => {
 export const useCsvData = () => {
     const dataCache = withLocalStorageCache(300_000);
     const [data, setData] = useState<Match[]>([])
-    const [isFetching, setIsFetching] = useState(false);
 
     useEffect(() => {
         const cachedData = dataCache.get();
-        console.log({isFetching});
-        if(isFetching) return;
         if(cachedData){
             setData(cachedData);
         } else {
-            setIsFetching(true);
-            console.log("fetching data")
             loadData().then((data) => {
                 dataCache.set(data);
                 setData(data)
-            }).finally(() => setIsFetching(false))
+            });
         }
     }, []);
 

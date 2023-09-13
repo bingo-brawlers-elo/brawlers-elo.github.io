@@ -6,14 +6,7 @@ import {useCsvData} from "./hooks/csv-data-hook.ts";
 import {MatchList} from "./components/MatchList.tsx";
 
 function App() {
-    useEffect(() => {
-        console.log("starting")
-    })
     const eloData = useCsvData();
-
-    useEffect(() => {
-        console.log({eloData})
-    })
 
   return (
     <>
