@@ -4,6 +4,7 @@ import {loadData, Match} from "./utils/load-data.ts";
 import {EloList} from "./components/EloList.tsx";
 import {useCsvData} from "./hooks/csv-data-hook.ts";
 import {MatchList} from "./components/MatchList.tsx";
+import {LeaderBoard} from "./components/LeaderBoard.tsx";
 
 function App() {
     const eloData = useCsvData();
@@ -13,6 +14,7 @@ function App() {
         <h1>Bingo Brawlers Elo</h1>
         <h2>Current Elo Ratings</h2>
         <EloList data={eloData}/>
+        <LeaderBoard data={eloData}/>
         <h2>Season 2 Matches</h2>
         <MatchList data={eloData} type={'competiton'}/>
         <h2>Season 2 Practice Matches</h2>
