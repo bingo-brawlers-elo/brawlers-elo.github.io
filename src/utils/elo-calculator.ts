@@ -38,7 +38,12 @@ const elosFromMatch = (playerOneElo: number, playerTwoElo: number, winner: 0|1|2
     }
 }
 
-export const eloFromData = (matches: Match[]): Record<string, number> => matches.reduce(
+export const eloFromData = (matches: Match[], includePracticeMatches: boolean = true): Record<string, number> => matches
+    .filter(({practice_match}) => {
+        if(includePracticeMatches) return true;
+        return practice_match === false
+    })
+    .reduce(
     (acc, match) => {
         const {playerOne, playerTwo} = elosFromMatch( acc[match.player_1] || DEFAULT_ELO, acc[match.player_2] || DEFAULT_ELO, match.winner)
 

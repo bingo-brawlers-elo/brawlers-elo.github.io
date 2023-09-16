@@ -1,12 +1,17 @@
 import {Match} from "../utils/load-data.ts";
 import {eloFromData} from "../utils/elo-calculator.ts";
-
+import {useState} from "react";
 
 export const EloList = ({data}: {data: Match[]}) => {
-    const eloMap = eloFromData(data);
+    const [includePracticeMatches, setIncludePracticeMatches] = useState(true);
+    const eloMap = eloFromData(data, includePracticeMatches);
     const sorted = Object.entries(eloMap).sort(([,eloA], [,eloB]) => eloB-eloA);
     return (
         <>
+            <div className={"filter"}>
+                <input id={'elo-filter'} type={"checkbox"} checked={includePracticeMatches} onClick={() => setIncludePracticeMatches(!includePracticeMatches)}/>
+                <label>Include Practice Matches</label>
+            </div>
             <table className={'elo-list'}>
 
                 <thead>
