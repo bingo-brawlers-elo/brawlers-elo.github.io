@@ -32,7 +32,12 @@ table {
   width: 15%;
 }
 
-
+.leader-board .playerName {
+  width: 55%
+}
+.leader-board .gamesWon {
+  width: 15%;
+}
 
 td, th {
   margin: 0;
