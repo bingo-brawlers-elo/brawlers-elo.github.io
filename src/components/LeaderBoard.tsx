@@ -36,8 +36,8 @@ export const LeaderBoard = ({data}: {data: Match[]}) => {
         <table className={'leader-board'}>
             <thead>
                 <tr>
-                    <th className={'playerName'}></th>
-                    <th className={'gamesWon'}></th>
+                    <th className={'playerName'}>player</th>
+                    <th className={'gamesWon'}>games won</th>
                 </tr>
             </thead>
             <tbody>
